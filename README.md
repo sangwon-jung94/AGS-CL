@@ -18,7 +18,7 @@
 #### 1) Clone git
 
 ```
-	$ git clone https://github.com/sangwon79/Continual-Learning-with-Node-Importance-based-Adaptive-Group-Sparse-Regularization.git
+$ git clone https://github.com/sangwon79/Continual-Learning-with-Node-Importance-based-Adaptive-Group-Sparse-Regularization.git
 ```
 
 
@@ -30,7 +30,7 @@
 #### 3) Implemetation commend
 
 ```
-	$ python3 ./main.py ~~
+$ python3 ./main.py ~~
 ```
 
 
@@ -52,7 +52,7 @@ This code is implemented based on [pytorch-a2c-ppo-acktr-gaail](https://github.c
 #### 1) Clone git
 
 ```
-	$ git clone https://github.com/sangwon79/Continual-Learning-with-Node-Importance-based-Adaptive-Group-Sparse-Regularization.git
+$ git clone https://github.com/sangwon79/Continual-Learning-with-Node-Importance-based-Adaptive-Group-Sparse-Regularization.git
 ```
 
 
@@ -66,21 +66,14 @@ This code is implemented based on [pytorch-a2c-ppo-acktr-gaail](https://github.c
 #### 3) Implemetation commend
 
 ```
-##### 	# Fine-tuning
+# Fine-tuning
+$ CUDA_VISIBLE_DEVICES=0 python3 main_rl.py --approach 'fine-tuning' --seed 0 --date 200605  
 
-​	$ CUDA_VISIBLE_DEVICES=0 python3 main_rl.py --approach 'fine-tuning' --seed 0 --date 200605  
+# EWC
+$ CUDA_VISIBLE_DEVICES=3 python3 main_rl.py --approach 'ewc' --seed 0 --date 200605 
 
-##### 	# EWC
-
-​	$ CUDA_VISIBLE_DEVICES=3 python3 main_rl.py --approach 'ewc' --seed 0 --date 200605 
-
-##### 	# AGS-CL
-
-​	$ CUDA_VISIBLE_DEVICES=3 python3 main_rl.py --approach 'gs' --seed 0 --date 200605 --gs-mu 0.1 --gs-lamb 1000
-
-------
-
-## 
+# AGS-CL
+$ CUDA_VISIBLE_DEVICES=3 python3 main_rl.py --approach 'gs' --seed 0 --date 200605 --gs-mu 0.1 --gs-lamb 1000
 ```
 
 ## **Citation**
