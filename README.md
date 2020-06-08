@@ -47,7 +47,7 @@ $ python3 ./main.py ~~
 
 #### Notes
 
-This code is implemented based on [pytorch-a2c-ppo-acktr-gaail](https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail) 
+This code is implemented by reference to [pytorch-a2c-ppo-acktr-gaail](https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail) 
 
 #### 1) Clone git
 
