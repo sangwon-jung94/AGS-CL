@@ -6,12 +6,6 @@
 
 ------
 
-## **Outline**
-
-[TOC]
-
-------
-
 ## **Implementation Details**
 
 ### 1. Supervised Learning
@@ -33,7 +27,7 @@
 
 ​	$ python3 ./main.py ~~
 
-
+------
 
 ### 2. Reinforcement Learning (Atari)
 
