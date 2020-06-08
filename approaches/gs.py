@@ -168,6 +168,7 @@ class Appr(object):
                             
                     weight = layer.weight.data
                     bias = layer.bias.data
+                    
                     if len(weight.size()) > 2:
                         norm = weight.norm(2,dim=(1,2,3))
                         mask = (self.omega[name]==0).float().unsqueeze(-1).unsqueeze(-1).unsqueeze(-1)
