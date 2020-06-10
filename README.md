@@ -1,8 +1,4 @@
-# [Continual Learning with Node Importance based Adaptive Group Sparse Regularization (AGS-CL)](https://arxiv.org/abs/2003.13726) 
-
-**Sangwon Jung, Hongjoon Ahn, Sungmin Cha and Taesup Moon**
-
-**[M.IN.D Lab](https://mindlab-skku.github.io), Sungkyunkwan University**
+# [Continual Learning with Node Importance based Adaptive Group Sparse Regularization (AGS-CL)]() 
 
 ------
 
@@ -18,22 +14,18 @@
 #### 1) Clone git
 
 ```
-$ git clone https://github.com/sangwon79/Continual-Learning-with-Node-Importance-based-Adaptive-Group-Sparse-Regularization.git
+$ git clone https://github.com/sangwon79/AGS-CL.git
 ```
-
-
 
 #### 2) Download dataset
 
 ​	dataset link
 
-#### 3) Execution command
+#### 3) Implemetation commend
 
 ```
 $ python3 ./main.py ~~
 ```
-
-
 
 ------
 
@@ -52,10 +44,8 @@ This code is implemented by reference to [pytorch-a2c-ppo-acktr-gaail](https://g
 #### 1) Clone git
 
 ```
-$ git clone https://github.com/sangwon79/Continual-Learning-with-Node-Importance-based-Adaptive-Group-Sparse-Regularization.git
+$ git clone https://github.com/sangwon79/AGS-CL.git
 ```
-
-
 
 #### 2) Install OpenAI Gym, Baselines
 
@@ -63,27 +53,15 @@ $ git clone https://github.com/sangwon79/Continual-Learning-with-Node-Importance
 
 ​	[OpenAI Gym](https://github.com/openai/gym#installation), [Baselines](https://github.com/openai/baselinesn)
 
-#### 3) Execution command
+#### 3) Implemetation commend
 
 ```
 # Fine-tuning
 $ CUDA_VISIBLE_DEVICES=0 python3 main_rl.py --approach 'fine-tuning' --seed 0 --date 200605  
 
 # EWC
-$ CUDA_VISIBLE_DEVICES=3 python3 main_rl.py --approach 'ewc' --seed 0 --date 200605 
+$ CUDA_VISIBLE_DEVICES=0 python3 main_rl.py --approach 'ewc' --seed 0 --date 200605 
 
 # AGS-CL
-$ CUDA_VISIBLE_DEVICES=3 python3 main_rl.py --approach 'gs' --seed 0 --date 200605 --gs-mu 0.1 --gs-lamb 1000
+$ CUDA_VISIBLE_DEVICES=0 python3 main_rl.py --approach 'gs' --seed 0 --date 200605 --gs-mu 0.1 --gs-lamb 1000
 ```
-
-## **Citation**
-
-```
-@article{jung2020adaptive,
-  title={Adaptive Group Sparse Regularization for Continual Learning},
-  author={Jung, Sangwon and Ahn, Hongjoon and Cha, Sungmin and Moon, Taesup},
-  journal={arXiv preprint arXiv:2003.13726},
-  year={2020}
-}
-```
-
