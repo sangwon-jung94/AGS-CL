@@ -27,6 +27,12 @@ $ git clone https://github.com/sangwon79/AGS-CL.git
 $ python3 ./main.py ~~
 ```
 
+#### 4) Implementation result
+
+|        | CIFAR100 | CIFAR-10/100 | Omniglot | CUB-200 |
+| :----: | :------: | :----------: | :------: | :-----: |
+| AGS-CL |          |              |          |         |
+
 ------
 
 ### 2. Reinforcement Learning (Atari)
