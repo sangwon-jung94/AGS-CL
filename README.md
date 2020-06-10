@@ -63,7 +63,7 @@ $ git clone https://github.com/sangwon79/Continual-Learning-with-Node-Importance
 
 ​	[OpenAI Gym](https://github.com/openai/gym#installation), [Baselines](https://github.com/openai/baselinesn)
 
-#### 3) Implemetation commend
+#### 3) Execution command
 
 ```
 # Fine-tuning
