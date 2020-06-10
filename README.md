@@ -27,7 +27,7 @@ $ git clone https://github.com/sangwon79/Continual-Learning-with-Node-Importance
 
 ​	dataset link
 
-#### 3) Implemetation commend
+#### 3) Execution command
 
 ```
 $ python3 ./main.py ~~
