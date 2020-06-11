@@ -1,9 +1,3 @@
-''' Incremental-Classifier Learning 
- Authors : Khurram Javed, Muhammad Talha Paracha
- Maintainer : Khurram Javed
- Lab : TUKL-SEECS R&D Lab
- Email : 14besekjaved@seecs.edu.pk '''
-
 from __future__ import print_function
 
 import copy
@@ -174,7 +168,7 @@ class Trainer(trainer.GenericTrainer):
                         mask = (self.omega[name]==0).float().unsqueeze(-1)
                     
                     zero_cnt = int((mask.sum()).item())
-                    indice = np.random.choice(range(zero_cnt), int(zero_cnt*(1-self.args.gamma)), replace=False)
+                    indice = np.random.choice(range(zero_cnt), int(zero_cnt*(1-self.args.rho)), replace=False)
                     indice = torch.tensor(indice).long()
                     idx = torch.arange(weight.shape[0])[mask.flatten(0)==1][indice]
                     mask[idx] = 0
@@ -293,3 +287,4 @@ class Trainer(trainer.GenericTrainer):
             for key in param_R.keys():
                 param_R[key]=(param_R[key]/total)
         return param_R
+
