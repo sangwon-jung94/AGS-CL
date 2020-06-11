@@ -139,7 +139,7 @@ class Appr(object):
                 self.omega = temp
             self.mask[n] = (self.omega[n]>0).float()
             
-        torch.save(self.model.state_dict(), './models/trained_model/' + self.log_name + '_task_{}.pt'.format(t))
+        torch.save(self.model.state_dict(), './trained_model/' + self.log_name + '_task_{}.pt'.format(t))
         
         test_loss, test_acc = self.eval(t, xvalid, yvalid)
         print(' Valid: loss={:.3f}, acc={:5.1f}% |'.format(test_loss,100*test_acc))
@@ -178,7 +178,7 @@ class Appr(object):
                         mask = (self.omega[name]==0).float().unsqueeze(-1)
 
                     zero_cnt = int((mask.sum()).item())
-                    indice = np.random.choice(range(zero_cnt), int(zero_cnt*(1-args.gamma)), replace=False)
+                    indice = np.random.choice(range(zero_cnt), int(zero_cnt*(1-args.rho)), replace=False)
                     indice = torch.tensor(indice).long()
                     idx = torch.arange(weight.shape[0])[mask.flatten(0)==1][indice]
                     mask[idx] = 0
