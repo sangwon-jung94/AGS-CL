@@ -15,7 +15,7 @@
 
 #### 1) Download dataset
 
-​	dataset link
+- omniglot : https://drive.google.com/file/d/1WxFZQyt3v7QRHwxFbdb1KO02XWLT0R9z/view?usp=sharing
 
 #### 2) Execution command
 
