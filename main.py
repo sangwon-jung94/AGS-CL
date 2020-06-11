@@ -37,9 +37,9 @@ if args.approach == 'ewc' or args.approach == 'rwalk' or args.approach == 'mas' 
     log_name = '{}_{}_{}_{}_lamb_{}_lr_{}_batch_{}_epoch_{}'.format(args.date, args.experiment, args.approach,args.seed, 
                                                                        args.lamb, args.lr, args.batch_size, args.nepochs)
 elif args.approach == 'gs':
-    log_name = '{}_{}_{}_{}_lamb_{}_mu_{}_gamma_{}_eta_{}_lr_{}_batch_{}_epoch_{}'.format(args.date, args.experiment,
+    log_name = '{}_{}_{}_{}_lamb_{}_mu_{}_rho_{}_eta_{}_lr_{}_batch_{}_epoch_{}'.format(args.date, args.experiment,
                                                                                           args.approach, args.seed, 
-                                                                                          args.lamb, args.mu, args.gamma,
+                                                                                          args.lamb, args.mu, args.rho,
                                                                                                    args.eta,
                                                                                           args.lr, args.batch_size, args.nepochs)
 elif args.approach == 'hat':
@@ -50,13 +50,7 @@ elif args.approach == 'hat':
 
 if args.output == '':
     args.output = './result_data/' + log_name + '.txt'
-"""
-print('=' * 100)
-print('Arguments =')
-for arg in vars(args):
-    print('\t' + arg + ':', getattr(args, arg))
-print('=' * 100)
-"""
+
 ########################################################################################################################
 # Seed
 np.random.seed(args.seed)
@@ -99,10 +93,6 @@ if args.experiment == 'split_cifar100' or args.experiment == 'split_cifar10_100'
 elif args.experiment == 'omniglot':
     if args.approach == 'hat':
         from networks import conv_net_omniglot_hat as network
-    elif 'lrp' in args.approach or 'proxy' in args.approach:
-        from networks import conv_net_omniglot_lrp as network
-    elif args.approach == 'ucl' or args.approach == 'ucl_ablation':
-        from networks import conv_net_omniglot_ucl as network
     else:
         from networks import conv_net_omniglot as network
 
@@ -117,6 +107,14 @@ print('\nInput size =', inputsize, '\nTask info =', taskcla)
 # Inits
 print('Inits...')
 torch.set_default_tensor_type('torch.cuda.FloatTensor')
+
+if not os.path.isdir('result_data'):
+    print('Make directory for saving results')
+    os.makedirs('result_data')
+    
+if not os.path.isdir('trained_model'):
+    print('Make directory for saving trained models')
+    os.makedirs('trained_model')
 
 net = network.Net(inputsize, taskcla).cuda()
 appr = approach.Appr(net, sbatch=args.batch_size, lr=args.lr, nepochs=args.nepochs, args=args, log_name=log_name)
@@ -161,10 +159,13 @@ for t, ncla in taskcla:
         lss[t, u] = test_loss
 
     # Save
+    
+    print('Average accuracy={:5.1f}%'.format(100 * np.mean(acc[t,:t+1])))
+    
     print('Save at ' + args.output)
     np.savetxt(args.output, acc, '%.4f')
     if args.approach != 'gs':
-        torch.save(net.state_dict(), './models/trained_model/' + log_name + '_task_{}.pt'.format(t))
+        torch.save(net.state_dict(), './trained_model/' + log_name + '_task_{}.pt'.format(t))
 
     
 # Done
@@ -200,3 +201,4 @@ if hasattr(appr, 'logs'):
             pickle.dump(appr.logs, output, pickle.HIGHEST_PROTOCOL)
 
 ########################################################################################################################
+
