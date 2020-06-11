@@ -27,11 +27,11 @@ $ python3 ./main.py --experiment split_cifar100 --approach gs --lamb 400 --mu 10
 $ python3 ./main.py --experiment split_cifar10_100 --approach gs --lamb 7000 --mu 20 --rho 0.2 --eta 0.9 
 
 # Omniglot
-$ python3 ./main.py --experiment omniglot --approach gs --lamb 13000 --mu 7 --rho 0.5 --eta 0.9 
+$ python3 ./main.py --experiment omniglot --approach gs --lamb 1000 --mu 7 --rho 0.5 --eta 0.9 
 
 # CUB200
 $ cd LargeScale_AGS
-$ python3 ./main.py --dataset CUB200 --trainer gs --lamb 1 --mu 0.5 --rho 0.1 --eta 0.9 
+$ python3 ./main.py --dataset CUB200 --trainer gs --lamb 1.5 --mu 0.5 --rho 0.1 --eta 0.9 
 ```
 
 #### 3) Result
