@@ -64,8 +64,7 @@ def get(seed=0, fixed_order=False, pc_valid=0, tasknum = 50):
         
         ncla_dict = torch.load(os.path.join(os.path.expanduser('./dat/binary_omniglot'), 'ncla_dict.pt'))
         # Load binary files
-        ids=list(shuffle(np.arange(tasknum),random_state=seed))
-#         ids=list(np.arange(tasknum))
+        ids=list(np.arange(tasknum))
         print('Task order =',ids)
         for i in range(tasknum):
             data[i] = dict.fromkeys(['name', 'ncla', 'train', 'test','valid'])
