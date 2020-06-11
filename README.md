@@ -35,7 +35,7 @@ $ cd LargeScale_AGS
 $ python3 ./main.py --dataset CUB200 --trainer gs --lamb 1.5 --mu 0.5 --rho 0.1 --eta 0.9 
 ```
 
-#### 3) Result
+#### 3) Result(Average accuracy)
 
 |        | CIFAR100 | CIFAR-10/100 | Omniglot | CUB-200 |
 | :----: | :------: | :----------: | :------: | :-----: |
