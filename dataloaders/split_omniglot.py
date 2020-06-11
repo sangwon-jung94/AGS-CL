@@ -18,9 +18,7 @@ def get(seed=0, fixed_order=False, pc_valid=0, tasknum = 50):
         os.makedirs('./dat/binary_omniglot')
         
         filename = 'Permuted_Omniglot_task50.pt'
-        filepath = os.path.join(os.getcwd(), 'dataloaders')
         filepath = './dat'
-#         filepath = os.path.join(os.getcwd(), '')
         f = torch.load(os.path.join(filepath,filename))
         ncla_dict = {}
         for i in range(tasknum):
@@ -29,8 +27,6 @@ def get(seed=0, fixed_order=False, pc_valid=0, tasknum = 50):
             data[i]['ncla'] = (torch.max(f['Y']['train'][i]) + 1).int().item()
             ncla_dict[i] = data[i]['ncla']
                 
-                
-#                 loader = torch.utils.data.DataLoader(dat[s], batch_size=1, shuffle=False)
             data[i]['train'] = {'x': [], 'y': []}
             data[i]['test'] = {'x': [], 'y': []}
             data[i]['valid'] = {'x': [], 'y': []}
