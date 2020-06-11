@@ -24,6 +24,7 @@ def get_args():
     parser.add_argument('--nepochs', default=100, type=int, required=False, help='(default=%(default)d)')
     parser.add_argument('--batch-size', default=256, type=int, required=False, help='(default=%(default)d)')
     parser.add_argument('--lr', default=0.001, type=float, required=False, help='(default=%(default)f)')
+    parser.add_argument('--rho', default=0.3, type=float, help='(default=%(default)f)')
     parser.add_argument('--gamma', default=0.75, type=float, help='(default=%(default)f)')
     parser.add_argument('--eta', default=0.8, type=float, help='(default=%(default)f)')
     parser.add_argument('--smax', default=400, type=float, help='(default=%(default)f)')
@@ -38,3 +39,4 @@ def get_args():
 
     args=parser.parse_args()
     return args
+
