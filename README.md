@@ -13,17 +13,11 @@
 - Omniglot : GPU Titan RTX / Pytorch 1.3.1 / CUDA 10.0
 - CUB200 : GPU 1080Ti / Pytorch 1.0.0+cu9.2 / CUDA 9.2
 
-#### 1) Clone git
-
-```
-$ git clone https://github.com/sangwon79/AGS-CL.git
-```
-
-#### 2) Download dataset
+#### 1) Download dataset
 
 ​	dataset link
 
-#### 3) Execution command
+#### 2) Execution command
 
 ```
 # Cifar100
@@ -40,7 +34,7 @@ $ cd LargeScale_AGS
 $ python3 ./main.py --dataset CUB200 --trainer gs --lamb 1 --mu 0.5 --rho 0.1 --eta 0.9 
 ```
 
-#### 4) Result
+#### 3) Result
 
 |        | CIFAR100 | CIFAR-10/100 | Omniglot | CUB-200 |
 | :----: | :------: | :----------: | :------: | :-----: |
@@ -60,19 +54,13 @@ $ python3 ./main.py --dataset CUB200 --trainer gs --lamb 1 --mu 0.5 --rho 0.1 --
 
 This code is implemented by reference to [pytorch-a2c-ppo-acktr-gaail](https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail) 
 
-#### 1) Clone git
-
-```
-$ git clone https://github.com/sangwon79/AGS-CL.git
-```
-
-#### 2) Install OpenAI Gym, Baselines
+#### 1) Install OpenAI Gym, Baselines
 
 ​	Follow below links for installation
 
 ​	[OpenAI Gym](https://github.com/openai/gym#installation), [Baselines](https://github.com/openai/baselinesn)
 
-#### 3) Execution command
+#### 2) Execution command
 
 ```
 # Fine-tuning
