@@ -25,13 +25,13 @@ if args.trainer == 'ewc' or args.trainer == 'rwalk' or args.trainer == 'mas' or 
     log_name = '{}_{}_{}_{}_lamb_{}_lr_{}_batch_{}_epoch_{}'.format(args.date, args.dataset, args.trainer,args.seed, 
                                                                        args.lamb, args.lr, args.batch_size, args.nepochs)
 elif args.trainer == 'gs':
-    log_name = '{}_{}_{}_{}_lamb_{}_mu_{}_gamma_{}_eta_{}_lr_{}_batch_{}_epoch_{}'.format(args.date, 
+    log_name = '{}_{}_{}_{}_lamb_{}_mu_{}_rho_{}_eta_{}_lr_{}_batch_{}_epoch_{}'.format(args.date, 
                                                                                           args.dataset, 
                                                                                           args.trainer, 
                                                                                           args.seed, 
                                                                                           args.lamb, 
                                                                                           args.mu,
-                                                                                          args.gamma,
+                                                                                          args.rho,
                                                                                           args.eta,
                                                                                           args.lr, 
                                                                                           args.batch_size, 
@@ -67,6 +67,14 @@ if args.dataset == 'CUB200':
     data_dict = dataset.data_dict
 taskcla = dataset.taskcla
 print('\nTask info =', taskcla)
+
+if not os.path.isdir('result_data'):
+    print('Make directory for saving results')
+    os.makedirs('result_data')
+    
+if not os.path.isdir('trained_model'):
+    print('Make directory for saving trained models')
+    os.makedirs('trained_model')
 
 # Args -- Experiment
     
@@ -133,10 +141,12 @@ for t, ncla in taskcla:
         print('>>> Test on task {:2d}: loss={:.3f}, acc={:5.1f}% <<<'.format(u, test_loss, 100 * test_acc))
         acc[t, u] = test_acc
         lss[t, u] = test_loss
-
+    
+    print('Average accuracy={:5.1f}%'.format(100 * np.mean(acc[t,:t+1])))
+    
     print('Save at ' + args.output)
     np.savetxt(args.output, acc, '%.4f')
-    torch.save(myModel.state_dict(), './models/trained_model/' + log_name + '_task_{}.pt'.format(t))
+    torch.save(myModel.state_dict(), './trained_model/' + log_name + '_task_{}.pt'.format(t))
 
 
 print('*' * 100)
@@ -148,4 +158,5 @@ for i in range(acc.shape[0]):
     print()
 print('*' * 100)
 print('Done!')
+
 
