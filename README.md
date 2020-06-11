@@ -53,7 +53,7 @@ $ python3 ./main.py --dataset CUB200 --trainer gs --lamb 1.5 --mu 0.5 --rho 0.1 
 
 #### Notes
 
-This code is implemented by reference to [pytorch-a2c-ppo-acktr-gaail](https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail) 
+The experimental environment for reinforcement learning is built based on [pytorch-a2c-ppo-acktr-gaail](https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail) 
 
 #### 1) Install OpenAI Gym, Baselines
 
