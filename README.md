@@ -15,7 +15,8 @@
 
 #### 1) Download dataset
 
-- omniglot : https://drive.google.com/file/d/1WxFZQyt3v7QRHwxFbdb1KO02XWLT0R9z/view?usp=sharing
+- Omniglot : https://drive.google.com/file/d/1WxFZQyt3v7QRHwxFbdb1KO02XWLT0R9z/view?usp=sharing
+- CUB200 : https://github.com/visipedia/tf_classification/wiki/CUB-200-Image-Classification
 
 #### 2) Execution command
 
