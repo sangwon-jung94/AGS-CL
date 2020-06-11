@@ -58,6 +58,9 @@ torch.backends.cudnn.deterministic = True
 # torch.backends.cudnn.benchmark = False
 torch.set_default_tensor_type('torch.cuda.FloatTensor')
 
+if not os.path.isdir('dat'):
+    print('Make directory for dataset')
+    os.makedirs('dat')
 
 print('Load data...')
 data_dict = None
