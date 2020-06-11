@@ -39,7 +39,7 @@ $ python3 ./main.py --dataset CUB200 --trainer gs --lamb 1.5 --mu 0.5 --rho 0.1 
 
 |        | CIFAR100 | CIFAR-10/100 | Omniglot | CUB-200 |
 | :----: | :------: | :----------: | :------: | :-----: |
-| AGS-CL |          |              |          |         |
+| AGS-CL |   64.2   |   76.0       |  82.2    |  82.9   |
 
 ------
 
