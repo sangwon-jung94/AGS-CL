@@ -2,14 +2,16 @@
 
 ------
 
-## **Implementation Details**
+## **Execution Details**
 
 ### 1. Supervised Learning
 
 ### Requirements
 
 - Python 3
-- Pytorch 1.2.0+cu9.2 / CUDA 9.2
+- Cifar100/Cifar10/100 : GPU 1080Ti / Pytorch 1.3.1+cu9.2 / CUDA 9.2
+- Omniglot : GPU Titan RTX / Pytorch 1.3.1 / CUDA 10.0
+- CUB200 : GPU 1080Ti / Pytorch 1.0.0+cu9.2 / CUDA 9.2
 
 #### 1) Clone git
 
@@ -21,13 +23,24 @@ $ git clone https://github.com/sangwon79/AGS-CL.git
 
 ​	dataset link
 
-#### 3) Implemetation commend
+#### 3) Execution command
 
 ```
-$ python3 ./main.py ~~
+# Cifar100
+$ python3 ./main.py --experiment split_cifar100 --approach gs --lamb 400 --mu 10 --rho 0.3 --eta 0.9 
+
+# Cifar10/100
+$ python3 ./main.py --experiment split_cifar10_100 --approach gs --lamb 7000 --mu 20 --rho 0.2 --eta 0.9 
+
+# Omniglot
+$ python3 ./main.py --experiment omniglot --approach gs --lamb 13000 --mu 7 --rho 0.5 --eta 0.9 
+
+# CUB200
+$ cd LargeScale_AGS
+$ python3 ./main.py --experiment CUB200 --approach gs --lamb 1 --mu 0.5 --rho 0.1 --eta 0.9 
 ```
 
-#### 4) Implementation result
+#### 4) Result
 
 |        | CIFAR100 | CIFAR-10/100 | Omniglot | CUB-200 |
 | :----: | :------: | :----------: | :------: | :-----: |
@@ -59,7 +72,7 @@ $ git clone https://github.com/sangwon79/AGS-CL.git
 
 ​	[OpenAI Gym](https://github.com/openai/gym#installation), [Baselines](https://github.com/openai/baselinesn)
 
-#### 3) Implemetation commend
+#### 3) Execution command
 
 ```
 # Fine-tuning
