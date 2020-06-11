@@ -37,7 +37,7 @@ $ python3 ./main.py --experiment omniglot --approach gs --lamb 13000 --mu 7 --rh
 
 # CUB200
 $ cd LargeScale_AGS
-$ python3 ./main.py --experiment CUB200 --approach gs --lamb 1 --mu 0.5 --rho 0.1 --eta 0.9 
+$ python3 ./main.py --dataset CUB200 --trainer gs --lamb 1 --mu 0.5 --rho 0.1 --eta 0.9 
 ```
 
 #### 4) Result
