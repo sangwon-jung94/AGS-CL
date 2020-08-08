@@ -12,6 +12,8 @@ args = get_args()
 
 if 'omniglot' in args.experiment:
     from networks.conv_net_omniglot import Net
+elif 'mixture' in args.experiment:
+    from networks.alexnet import Net
 else:
     from networks.conv_net import Net
 

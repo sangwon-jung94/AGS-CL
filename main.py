@@ -16,20 +16,6 @@ tstart = time.time()
 # Arguments
 
 args = get_args()
-# Split
-args.split = False
-notMNIST = False
-split_experiment = [
-    'split_cifar100',
-    'split_cifar10_100',
-    'omniglot',
-]
-
-conv_experiment = [
-    'split_cifar100',
-    'split_cifar10_100',
-    'omniglot',
-]
 
 ##########################################################################################################################33
 
@@ -50,7 +36,7 @@ elif args.approach == 'hat':
 
 if args.output == '':
     args.output = './result_data/' + log_name + '.txt'
-
+tr_output = './result_data/' + log_name + '_train' '.txt'
 ########################################################################################################################
 # Seed
 np.random.seed(args.seed)
@@ -69,6 +55,8 @@ elif args.experiment == 'split_cifar10_100':
     from dataloaders import split_cifar10_100 as dataloader
 elif args.experiment == 'omniglot':
     from dataloaders import split_omniglot as dataloader
+elif args.experiment == 'mixture':
+    from dataloaders import mixture as dataloader
 
 # Args -- Approach
 if args.approach == 'gs':
@@ -95,6 +83,12 @@ elif args.experiment == 'omniglot':
         from networks import conv_net_omniglot_hat as network
     else:
         from networks import conv_net_omniglot as network
+        
+elif args.experiment == 'mixture':
+    if args.approach == 'hat':
+        pass
+    else:
+        from networks import alexnet as network
 
 ########################################################################################################################
 
@@ -138,9 +132,6 @@ for t, ncla in taskcla:
     xvalid = data[t]['valid']['x'].cuda()
 
     ytrain = data[t]['train']['y'].cuda()
-    print(t)
-    if t == 0 :
-        print(ytrain)
     yvalid = data[t]['valid']['y'].cuda()
     task = t
 
@@ -157,7 +148,7 @@ for t, ncla in taskcla:
                                                                                       100 * test_acc))
         acc[t, u] = test_acc
         lss[t, u] = test_loss
-
+        
     # Save
     
     print('Average accuracy={:5.1f}%'.format(100 * np.mean(acc[t,:t+1])))

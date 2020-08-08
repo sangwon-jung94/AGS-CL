@@ -8,7 +8,8 @@ def get_args():
     parser.add_argument('--experiment', default='pmnist', type=str, required=False,
                         choices=['omniglot',
                                  'split_cifar10_100',
-                                 'split_cifar100',],
+                                 'split_cifar100',
+                                 'mixture'],
                         help='(default=%(default)s)')
     parser.add_argument('--approach', default='lrp', type=str, required=False,
                         choices=['ewc',

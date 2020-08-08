@@ -14,11 +14,11 @@ def get(seed=0, fixed_order=False, pc_valid=0, tasknum = 50):
     size = [1, 28, 28]
     tasknum = 50
 
-    if not os.path.isdir('./dat/binary_omniglot/'):
-        os.makedirs('./dat/binary_omniglot')
+    if not os.path.isdir('../dat/binary_omniglot/'):
+        os.makedirs('../dat/binary_omniglot')
         
         filename = 'Permuted_Omniglot_task50.pt'
-        filepath = './dat'
+        filepath = '../dat'
         f = torch.load(os.path.join(filepath,filename))
         ncla_dict = {}
         for i in range(tasknum):
@@ -56,15 +56,16 @@ def get(seed=0, fixed_order=False, pc_valid=0, tasknum = 50):
             for s in ['train', 'test', 'valid']:
 #                 data[i][s]['x'] = torch.stack(data[i][s]['x']).view(-1, size[0], size[1], size[2])
                 data[i][s]['y'] = torch.LongTensor(np.array(data[i][s]['y'], dtype=int)).view(-1)
-                torch.save(data[i][s]['x'],os.path.join(os.path.expanduser('./dat/binary_omniglot'), 'data' + str(i) + s + 'x.bin'))
-                torch.save(data[i][s]['y'],os.path.join(os.path.expanduser('./dat/binary_omniglot'), 'data' + str(i) + s + 'y.bin'))
-        torch.save(ncla_dict, os.path.join(os.path.expanduser('./dat/binary_omniglot'), 'ncla_dict.pt'))
+                torch.save(data[i][s]['x'],os.path.join(os.path.expanduser('../dat/binary_omniglot'), 'data' + str(i) + s + 'x.bin'))
+                torch.save(data[i][s]['y'],os.path.join(os.path.expanduser('../dat/binary_omniglot'), 'data' + str(i) + s + 'y.bin'))
+        torch.save(ncla_dict, os.path.join(os.path.expanduser('../dat/binary_omniglot'), 'ncla_dict.pt'))
 
     else:
         
-        ncla_dict = torch.load(os.path.join(os.path.expanduser('./dat/binary_omniglot'), 'ncla_dict.pt'))
+        ncla_dict = torch.load(os.path.join(os.path.expanduser('../dat/binary_omniglot'), 'ncla_dict.pt'))
         # Load binary files
-        ids=list(np.arange(tasknum))
+#         ids=list(np.arange(tasknum))
+        ids=list(shuffle(np.arange(50),random_state=0)+1)
         print('Task order =',ids)
         for i in range(tasknum):
             data[i] = dict.fromkeys(['name', 'ncla', 'train', 'test','valid'])
@@ -74,9 +75,9 @@ def get(seed=0, fixed_order=False, pc_valid=0, tasknum = 50):
             # Load
             for s in ['train', 'test', 'valid']:
                 data[i][s] = {'x': [], 'y': []}
-                data[i][s]['x'] = torch.load(os.path.join(os.path.expanduser('./dat/binary_omniglot'), 
+                data[i][s]['x'] = torch.load(os.path.join(os.path.expanduser('../dat/binary_omniglot'), 
                                                           'data' + str(ids[i]) + s + 'x.bin'))
-                data[i][s]['y'] = torch.load(os.path.join(os.path.expanduser('./dat/binary_omniglot'), 
+                data[i][s]['y'] = torch.load(os.path.join(os.path.expanduser('../dat/binary_omniglot'), 
                                                           'data' + str(ids[i]) + s + 'y.bin'))
 
 

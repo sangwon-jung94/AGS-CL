@@ -77,9 +77,7 @@ class Appr(object):
                         print(' lr={:.1e}'.format(lr),end='')
                         if lr<self.lr_min:
                             print()
-                            if args.conv_net:
-                                pass
-#                                 break
+                            pass
                         patience=self.lr_patience
                         self.optimizer=self._get_optimizer(lr)
                 print()
