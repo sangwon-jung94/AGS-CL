@@ -122,6 +122,8 @@ relevance_set = {}
 acc = np.zeros((len(taskcla), len(taskcla)), dtype=np.float32)
 lss = np.zeros((len(taskcla), len(taskcla)), dtype=np.float32)
 for t, ncla in taskcla:
+    if t==1 and 'find_mu' in args.date:
+        break
     
     print('*' * 100)
     print('Task {:2d} ({:s})'.format(t, data[t]['name']))
