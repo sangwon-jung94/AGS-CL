@@ -86,7 +86,7 @@ elif args.experiment == 'omniglot':
         
 elif args.experiment == 'mixture':
     if args.approach == 'hat':
-        pass
+        from networks import alexnet_hat as network
     else:
         from networks import alexnet as network
 
